@@ -1,0 +1,45 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+
+{% block BASE_CONTENIDO %}
+<div class="row align-items-center my-5">
+    <h1 class="pb-lg-3 text-bg-light">
+        {% block INDEX_TITULO %}
+        {% if user.is_authenticated %}
+        {{ mensaje }}
+        <h3> Bienvenido {{ user.username }}</h3>
+        {% endif %}
+        {% endblock INDEX_TITULO %}
+    </h1>
+</div>
+
+{% block INDEX_CONTENIDO %}
+
+
+<div class="row gx-4 gx-lg-5">
+    <div class="col-md-5">
+        <img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'home/img/ferrari.jpg' %}" alt="..." />
+    </div>
+    <div class="col-md-7">
+        <div class="row">
+            <div class="col-md-6 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">crear vehiculo</h2>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'altaVehiculo:create' %}" >Ir</a></div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">ver vehiculos</h2>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'altaVehiculo:list' %}">Ir</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock INDEX_CONTENIDO %}
+{% endblock BASE_CONTENIDO %}

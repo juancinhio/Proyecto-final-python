@@ -1,0 +1,56 @@
+{% extends 'altaVehiculo/index.html' %}
+
+
+{% block INDEX_TITULO %} 
+    Detalle del vehiculo
+{% endblock INDEX_TITULO %}
+
+{% block INDEX_CONTENIDO %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card mb-4">
+                <div class="card-body">
+            <h2 class="card-title styled-title">Detalles del Cliente</h2>
+                <p>Nombre: {{ cliente.nombre }}</p>
+                <p>Apellido: {{ cliente.apellido }}</p>
+                <p>Teléfono: {{ cliente.telefono }}</p>
+                <p>Dni: {{ cliente.dni }}</p>
+                <p>Domicilio: {{ cliente.domicilio }}</p>
+                <div class="btn-group">
+                    <a class="btn btn-primary btn-sm" href="{{ cliente_update_url }}">Modificar</a>
+                    <a class="btn btn-primary btn-sm" href="{% url 'altaVehiculo:delete' object.pk %}">Eliminar</a>
+                </div>
+        </div>
+    </div>  
+</div> 
+    <div class="col-md-5 offset-md-2">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title styled-title">Mantenimiento</h2>
+                <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'repuestos:home' %}" >Añadir</a></div>
+            </div>
+        </div>
+    </div> 
+    <div class="col-md-5 offset-md-2"></div>
+    <td><a href="{% url 'altaVehiculo:list' %}" class="btn btn-primary col-md-5">atras</a></td>
+</div> 
+<div class="col-md-5">
+    <div class="card mb-5">
+        <div class="card-body">
+            <h2 class="card-title styled-title">Datos del Vehiculo</h2>
+                <p>Patente: {{ vehiculo.patente }}</p>
+                <p>Marca: {{ vehiculo.marca }}</p>
+                <p>Modelo: {{ vehiculo.modelo }}</p>
+                <p>fecha: {{object.fecha | date:"d/m/Y"}}</p>
+                <div class="btn-group">
+                <a class="btn btn-primary btn-sm" href="{{ vehiculo_update_url }}">Modificar</a>
+                <a class="btn btn-primary btn-sm" href="{% url 'altaVehiculo:delete' object.pk %}">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>  
+
+
+{% endblock INDEX_CONTENIDO %}

@@ -1,0 +1,13 @@
+{% extends 'altaVehiculo/index.html' %}
+
+{% block INDEX_TITULO %} 
+    Lista de vehiculos
+{% endblock INDEX_TITULO %}
+
+{% block INDEX_CONTENIDO %}
+    {% if object_list %}
+        {% include 'altaVehiculo/tabla.html'%}
+    {% else %}
+        <p>No hay elementos</p>
+    {% endif %}
+{% endblock INDEX_CONTENIDO %}

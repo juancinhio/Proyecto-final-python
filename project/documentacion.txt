@@ -1,0 +1,2 @@
+en esta app web, solo funciona la primer opcion de crear un vehiculo, donde vamos a poder crear un vehiculo,
+asignarlo a un cliente y asignarle una fecha donde ingreso a ser reparado el vehiculo

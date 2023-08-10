@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Table 03</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{% static "altaVehiculo/css/style.css" %}">
+
+    <style>
+        .card-body {
+            overflow: auto;
+            transition: height 0.3s ease-in-out;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" style="width: 67rem;">
+        <div class="card-body" id="cardBody">
+            <h5 class="card-title">Circuito Refrigerante</h5>
+            <form method="post" id="miFormulario">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead class="thead-primary">
+                                    <tr>
+                                        <th>Pedidos</th>
+                                        <th>Servicio</th>
+                                        <th>Cantidad</th>
+                                        <th>OK</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for servicio in servicios_circuito %}
+                                    <tr class="opcion">
+                                        <td>
+                                            <input type="checkbox" class="opcion-input" name="pedido_{{ servicio.id }}" value="{{ servicio.pedidos }}">
+                                        </td>
+                                        <td>
+                                            <label for="nombre">{{ servicio.nombre }}:</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="opcion-input" name="cantidad_{{ servicio.id }}" value="{{ servicio.cantidad }}">
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" class="opcion-checkbox" name="ok_{{ servicio.id }}" {% if servicio.ok %}checked{% endif %}>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-footer">
+                    <input type="submit" value="Enviar" class="btn btn-primary btn-sm">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const opcionCheckboxes = document.querySelectorAll('.opcion-checkbox');
+            
+            opcionCheckboxes.forEach(function(opcionCheckbox) {
+                opcionCheckbox.addEventListener('change', function() {
+                    const fila = this.closest('tr');
+                    const inputsHabilitar = fila.querySelectorAll('.opcion-input');
+                    inputsHabilitar.forEach(function(input) {
+                        input.disabled = !this.checked;
+                    }, this);
+                });
+            });
+    
+            const checkbox = document.getElementById('checkbox');
+            const cardBody = document.getElementById('cardBody');
+            const formulario = document.getElementById('miFormulario');
+    
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    formulario.classList.remove('hidden');
+                    cardBody.style.width = '100%';
+                } else {
+                    formulario.classList.add('hidden');
+                    cardBody.style.width = 'initial';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

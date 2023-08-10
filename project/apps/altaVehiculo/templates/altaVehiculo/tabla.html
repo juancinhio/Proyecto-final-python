@@ -1,0 +1,83 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Table 03</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{% static "altaVehiculo/css/style.css" %}">
+
+</head>
+<body>
+<form method="GET" action="">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" name="q" placeholder="Buscar...">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+        </div>
+    </div>
+</form>
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-wrap">
+            <table class="table">
+                <thead class="thead-primary" color="grey">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Teléfono</th>
+                    <th>Patente</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Fecha</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for object in object_list %}
+                    {% with cliente=object.cliente_id vehiculo=object.vehiculo_id %}
+                        <tr>
+                            <td>{{ cliente.nombre }}</td>
+                            <td>{{ cliente.apellido }}</td>
+                            <td>{{ cliente.telefono }}</td>
+                            <td>{{ vehiculo.patente }}</td>
+                            <td>{{ vehiculo.marca }}</td>
+                            <td>{{ vehiculo.modelo }}</td>
+                            <td>{{ object.fecha | date:"d/m/Y" }}</td>
+                            <td><a href="/altaVehiculo/detail_alta/{{ object.pk }}" class="btn btn-primary">Más</a></td>
+                        </tr>
+                    {% endwith %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% if object_list.has_next %}
+        <div class="pagination">
+            {% if object_list.has_previous %}
+            <a href="?page=1">Primera</a>
+            <a href="?page={{ object_list.previous_page_number }}">Anterior</a>
+            {% endif %}
+            <span class="current-page">{{ object_list.number }}</span>
+            <span class="total-pages">de {{ object_list.paginator.num_pages }}</span>
+            {% if object_list.has_next %}
+            <a href="?page={{ object_list.next_page_number }}">Siguiente</a>
+            <a href="?page={{ object_list.paginator.num_pages }}">Última</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+</section>
+
+<script src="{% static "altaVehiculo/js/jquery.min.js" %}"></script>
+<script src="{% static "altaVehiculo/js/popper.js" %}"></script>
+<script src="{% static "altaVehiculo/js/bootstrap.min.js" %}"></script>
+<script src="{% static "altaVehiculo/js/main.js" %} "></script>
+
+</body>
+</html>

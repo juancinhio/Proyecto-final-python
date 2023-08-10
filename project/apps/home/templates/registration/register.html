@@ -1,0 +1,20 @@
+{% extends 'Home/index.html' %}
+
+{% block INDEX_TITULO %}
+
+{% endblock INDEX_TITULO %}
+
+{% block INDEX_CONTENIDO %}
+<div class="col-md-7 mb-5 offset-md-2">
+    <div class="card h-100">
+        <div class="card-body">
+            <form action="" method="post" class="mx-auto text-center">
+                <h2 class="card-title">Registro</h2>
+                {% csrf_token %}
+                {{ form.as_p }}
+            </form>
+        </div>
+        <div class="card-footer text-center"><button type="submit" class="btn btn-success">Registrar nuevo usuario</button></div>
+    </div>
+</div>
+{% endblock INDEX_CONTENIDO %}

@@ -1,0 +1,106 @@
+{% extends 'altaVehiculo/index.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'altaVehiculo/css/style.css' %}">
+
+
+{% block INDEX_TITULO %} 
+    Alta vehiculo
+{% endblock INDEX_TITULO %}
+
+{% block INDEX_CONTENIDO %}
+
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <h2 class="card-title styled-title">Cliente</h2>
+                    <div class="form-group">
+                        <br>
+                        <label for="{{ form.cliente_nombre.id_for_label }}">Nombre del Cliente:</label>
+                        {{ form.cliente_nombre }}
+                    </br>
+                    </div>
+
+                    <div class="form-group">
+                        <br>
+                        <label for="{{ form.cliente_apellido.id_for_label }}">Apellido del Cliente:</label>
+                        {{ form.cliente_apellido }}
+                    </br>
+                    </div>
+
+                    <div class="form-group">
+                        <br>
+                        <label for="{{ form.cliente_telefono.id_for_label }}">Teléfono del Cliente:</label>
+                        {{ form.cliente_telefono }}
+                    </br>
+                    </div>
+
+                    <div class="form-group">
+                        <br>
+                        <label for="{{ form.cliente_dni.id_for_label }}" >DNI del Cliente:</label>
+                        {{ form.cliente_dni }}
+                    </br>
+                    </div>
+
+                    <div class="form-group">
+                        <br>
+                        <label for="{{ form.cliente_domicilio.id_for_label }}">Domicilio del Cliente:</label>
+                        {{ form.cliente_domicilio }}
+                    </br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <h2 class="card-title styled-title">Vehiculo</h2>
+                    <div class="form-group">
+                        <br>
+                        <label for="{{ form.vehiculo_marca.id_for_label }}">Marca del Vehículo:</label>
+                        {{ form.vehiculo_marca }}
+                    </br>
+                    </div>
+
+                    <div class="form-group">
+                    </br>
+                        <label for="{{ form.vehiculo_modelo.id_for_label }}">Modelo del Vehículo:</label>
+                        {{ form.vehiculo_modelo }}
+                    </br>
+                    </div>
+
+                    <div class="form-group">
+                        <br>
+                        <label for="{{ form.vehiculo_patente.id_for_label }}">Patente del Vehículo:</label>
+                        {{ form.vehiculo_patente }}
+                    </br>
+                    </div>
+
+                    <div class="form-group">
+                        <br>
+                        <label for="{{ form.vehiculo_km.id_for_label }}">Kilometraje del Vehículo:</label>
+                        {{ form.vehiculo_km }}
+                    </br>
+                    </div>
+
+                    <div class="form-group">
+                        <br>
+                        <label for="fecha_registro">Fecha de ingreso:</label>
+                        <input type="date" name="fecha_registro" required>
+                    </br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+    </div>
+</form>
+
+
+{% endblock INDEX_CONTENIDO %}

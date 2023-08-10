@@ -1,0 +1,12 @@
+{% extends 'home/index.html' %}
+
+{% block INDEX_TITULO %} 
+    Categorías de Putoooo
+{% endblock INDEX_TITULO %}
+<a href="{% url 'cliente:cliente_create' %}">Crear Categorías de Productos</a>
+    <br>
+{% block INDEX_CONTENIDO %}
+    
+  
+    <a href="{% url 'home:home' %}">Ir al menú principal</a>
+{% endblock INDEX_CONTENIDO %}

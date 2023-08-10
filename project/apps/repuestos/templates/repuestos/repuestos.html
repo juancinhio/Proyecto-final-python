@@ -1,0 +1,84 @@
+{% extends 'repuestos/index.html' %}
+
+{% block INDEX_CONTENIDO %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <style>
+        .service-container {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <button class="service-button btn btn-primary btn-sm" data-target="afinacion">Afinación</button>
+    <button class="service-button btn btn-primary btn-sm" data-target="frenos">Frenos</button>
+    <button class="service-button btn btn-primary btn-sm" data-target="suspencion">Suspensión</button>
+    <button class="service-button btn btn-primary btn-sm" data-target="service">Service</button>
+    <button class="service-button btn btn-primary btn-sm" data-target="embrague">Embrague</button>
+    <button class="service-button btn btn-primary btn-sm" data-target="distribucion">Distribucion</button>
+    <button class="service-button btn btn-primary btn-sm" data-target="circuito">Circuito refrigerante</button>
+    <button class="service-button btn btn-primary btn-sm" data-target="electricidad">Electricidad</button>
+    <button class="service-button btn btn-primary btn-sm" data-target="motor">Motor</button>
+    <button class="service-button btn btn-primary btn-sm" data-target="otros">Otros</button>
+    <!-- Agrega más botones para otros servicios si es necesario -->
+    
+    <div class="service-container afinacion">
+        {% include 'repuestos/afinacion.html' %}
+    </div>
+    <div class="service-container frenos">
+        {% include 'repuestos/frenos.html' %}
+    </div>
+    <div class="service-container suspencion">
+        {% include 'repuestos/suspencion.html' %}
+    </div>
+    <div class="service-container service">
+        {% include 'repuestos/service.html' %}
+    </div>
+    <div class="service-container embrague">
+        {% include 'repuestos/embrague.html' %}
+    </div>
+    <div class="service-container distribucion">
+        {% include 'repuestos/distribucion.html' %}
+    </div>
+    <div class="service-container circuito">
+        {% include 'repuestos/circuito_refrigerante.html' %}
+    </div>
+    <div class="service-container electricidad">
+        {% include 'repuestos/electricidad.html' %}
+    </div>
+    <div class="service-container motor">
+        {% include 'repuestos/motor.html' %}
+    </div>
+    <div class="service-container otros">
+        {% include 'repuestos/otros.html' %}
+    </div>
+    <!-- Agrega más contenedores para otros servicios si es necesario -->
+
+    <script>
+        const buttons = document.querySelectorAll('.service-button');
+        const containers = document.querySelectorAll('.service-container');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const target = button.getAttribute('data-target');
+                containers.forEach(container => {
+                    container.classList.remove('active');
+                });
+                document.querySelector(`.${target}`).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+{% endblock INDEX_CONTENIDO %}

@@ -1,0 +1,5 @@
+Faura Juan Manuel 
+
+
+Este proyecto consiste en un crud sobre carga de clientes y vehiculos para un taller de mecanica integral, con una funcion de carga de servicios con sus respectivas categorias y precios, para llevar un registro de la clientela concurrente y almacenar de forma mas eficaz la llegada y gestion de vehiculos.
+
